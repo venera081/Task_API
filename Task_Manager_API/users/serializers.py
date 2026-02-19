@@ -67,4 +67,5 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         return data
 
 
-
+class OauthSerializer(serializers.Serializer):
+    code = serializers.CharField()

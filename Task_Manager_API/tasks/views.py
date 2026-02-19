@@ -12,6 +12,9 @@ class TaskListCreateAPIView(ListCreateAPIView):
     serializer_class = TaskListSerializer
     pagination_class = PageNumberPagination
     permission_classes = [IsAuthenticated, IsOwnerOrManagerOrSelf]
+    filterset_fields = ['status', 'priority', 'category']
+    search_fields = ['title', 'description']
+    ordering_fields = ['created_at', 'deadline']
 
     def get_queryset(self):
         return get_tasks_for_user(self.request.user)
