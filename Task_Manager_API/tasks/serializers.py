@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Task, Category
+from .models import Task, Category, SubTask, Comment, TaskLog
 
 class CategoryListSerializer(serializers.ModelSerializer):
    class Meta:
@@ -17,4 +17,15 @@ class TaskDetailSerializer(serializers.ModelSerializer):
    class Meta:
       model = Task
       fields = '__all__'
-      read_only_fields = ['owner']      
+      read_only_fields = ['owner']  
+
+class SubTaskSerializer(serializers.ModelSerializer):
+   class Meta:
+      model = SubTask
+      fields = '__all__'
+      
+class CommentSerializer(serializers.ModelSerializer):
+   class Meta:
+      model = Comment
+      fields = '__all__'
+      read_only_fields = ['author']

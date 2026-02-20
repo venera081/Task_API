@@ -12,3 +12,9 @@ class IsOwnerOrManagerOrSelf(BasePermission):
             return obj.owner.role == 'employee'
 
         return obj.owner == user
+    
+
+class IsOwnerRole(BasePermission):
+    def has_objects_permission(self, request, view, obj):
+        return request.user.role == 'owner'
+
