@@ -55,8 +55,8 @@ cd Task_Manager_Api
 ### 2. Create virtual environment
 
 ```bash
-python -m venv venv(or - python3 -m venv venv)
-source venv/bin/activate(for Linux)
+python -m venv venv  # or - python3 -m venv venv
+source venv/bin/activate  # for Linux
 ```
 
 ---
