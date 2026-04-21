@@ -1,53 +1,88 @@
-# Task Manager API
+#  Task Manager API
 
-A full-featured backend application for task management built with Django REST Framework.
-Supports user roles, companies, tasks, notifications, and statistics.
+A production-style backend Task Management system built with Django REST Framework.
+This project demonstrates real-world backend architecture including authentication, role-based access control, notifications, and scalable service design.
 
 ---
 
-##  Features
+##  About Project
+
+This API allows users to manage tasks, categories, companies, and team workflows with role-based permissions and automated notifications.
+
+It is designed as a backend system similar to real SaaS products.
+
+---
+
+##  Key Features
 
 *  JWT Authentication (Access & Refresh tokens)
 *  Email confirmation system
 *  Google OAuth login
-*  User roles:
+*  Role-based access control:
 
   * Owner
   * Manager
   * Employee
-*  Company management
+*  Company management system
 *  Task CRUD operations
 *  Task categories
 *  Subtasks support
 *  Comments system
-*  Notifications
-*  User statistics
+*  Automatic notifications on task updates
+*  User statistics dashboard
 *  Task status change logs
 *  Filtering, search, and ordering
+*  Rate limiting (throttling)
 *  API documentation (Swagger & ReDoc)
 
 ---
 
 ##  Tech Stack
 
-* Python 3.x
+* Python 3.12
 * Django 6
 * Django REST Framework
 * PostgreSQL / SQLite
-* JWT (SimpleJWT)
+* SimpleJWT
 * drf-yasg (Swagger)
 * Gunicorn
-* Docker (in progress)
+* Docker
 
 ---
 
-##  Installation & Setup
+##  Run with Docker
 
-### 1. Clone the repository
+### 1. Build and run containers
 
 ```bash
-git clone https://github.com/your-username/Task_Manager_Api.git
-cd Task_Manager_Api
+docker compose up --build
+```
+
+---
+
+### 2. Run migrations
+
+```bash
+docker compose exec web python manage.py migrate
+```
+
+---
+
+### 3. Create superuser
+
+```bash
+docker compose exec web python manage.py createsuperuser
+```
+
+---
+
+##  Installation (Local Setup)
+
+### 1. Clone repository
+
+```bash
+git clone https://github.com/your-username/Task_Manager_API.git
+cd Task_Manager_API
 ```
 
 ---
@@ -55,8 +90,8 @@ cd Task_Manager_Api
 ### 2. Create virtual environment
 
 ```bash
-python -m venv venv  # or - python3 -m venv venv
-source venv/bin/activate  # for Linux
+python -m venv venv
+source venv/bin/activate
 ```
 
 ---
@@ -69,7 +104,9 @@ pip install -r requirements.txt
 
 ---
 
-### 4. Create .env file
+### 4. Configure environment variables
+
+Create `.env` file:
 
 ```env
 SECRET_KEY=your_secret_key
@@ -100,7 +137,7 @@ python manage.py migrate
 
 ---
 
-### 6. Run the server
+### 6. Run server
 
 ```bash
 python manage.py runserver
@@ -110,22 +147,22 @@ python manage.py runserver
 
 ##  API Documentation
 
-* Swagger:
-  `http://127.0.0.1:8000/swagger/`
+* Swagger UI:
+  http://127.0.0.1:8000/swagger/
 
 * ReDoc:
-  `http://127.0.0.1:8000/redoc/`
+  http://127.0.0.1:8000/redoc/
 
 ---
 
 ##  Authentication
 
-This project uses JWT authentication:
+JWT-based authentication system:
 
-* Access Token (15 minutes)
-* Refresh Token (1 day)
+* Access Token: 15 minutes
+* Refresh Token: 1 day
 
-Header example:
+### Example header:
 
 ```http
 Authorization: Bearer <your_token>
@@ -133,7 +170,7 @@ Authorization: Bearer <your_token>
 
 ---
 
-##  Main Endpoints
+##  Main API Endpoints
 
 ###  Users
 
@@ -162,11 +199,11 @@ Authorization: Bearer <your_token>
 
 ##  Architecture
 
-The project follows clean architecture principles:
+The project follows clean backend architecture principles:
 
-* Service Layer (business logic separated)
-* Custom permissions
-* Modular apps:
+* Service Layer (business logic separation)
+* Custom permissions system
+* Modular Django apps:
 
   * users
   * tasks
@@ -176,45 +213,37 @@ The project follows clean architecture principles:
 
 ---
 
-##  Permissions
+##  Permissions System
 
-* Owner — full access
-* Manager — limited access
-* Employee — only own data
+* **Owner** → full access to system
+* **Manager** → limited management access
+* **Employee** → access only to own data
 
 ---
 
 ##  Highlights
 
-* Task status change logging
-* Automatic notifications on status updates
-* User task statistics
-* Request throttling
-* Advanced filtering and search
-
----
-
-##  Docker
-
-Docker support will be added soon.
+* Task lifecycle tracking with logs
+* Automatic notifications on status changes
+* User statistics system
+* Advanced filtering, search, ordering
+* Request throttling for API protection
 
 ---
 
 ##  Deployment
 
-Planned deployment options:
+Planned deployment:
 
 * Render
 * Railway
-* VPS
+* VPS (Linux server)
 
 ---
 
 ##  Author
 
 Backend Developer (Junior)
-Stack: Python, Django, DRF
-Goal: Work internationally as a backend engineer
 
-
-
+* Stack: Python, Django, DRF
+* Goal: Work internationally as a backend engineer
